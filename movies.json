@@ -1,0 +1,10 @@
+[
+    {"id": 1, "name": "lightyear",          "image":"./img/lightyear (1).jpg",                   "price": 2000},
+    {"id": 2, "name": "Dragon Ball",        "image":"./img/Dragon Ball.jpg",                     "price": 3400},
+    {"id": 3, "name": "Bob Esponja",        "image":"./img/bobesponja.jpg",                      "price": 1500},
+    {"id": 4, "name": "Godzilla vs Kong",   "image":"./img/godzillavskong.jpg",                  "price": 1000},
+    {"id": 5, "name": "Tom y Jerry",        "image":"./img/tomandjerry.jpg",                     "price": 1900},
+    {"id": 6, "name": "La mujer Maravilla", "image":"./img/wonderwoman.jpg",                     "price": 4000},
+    {"id": 7, "name": "one Piece Film Red", "image":"./img/one piece red.jpg",                   "price": 5000},
+    {"id": 8, "name": "Jujutsu Kaisen 0",   "image":"./img/jujutsu-kaisen-0-poster-entero.webp", "price": 3750}
+]
