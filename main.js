@@ -1,16 +1,3 @@
-const requestData = () =>{
-    let name = localStorage.getItem("name")
-    if(name === null){
-      name = prompt("Ingrese su nombre");
-    }
-    localStorage.setItem("name", name);
-    if(name){
-      alert(`Bienvenido ${name} a la tienda de peliculas online!`)
-      return true
-    }
-    
-}
-
 let movies = [];
 
 fetch("./movies.json")
@@ -34,6 +21,8 @@ data.forEach((movie,index) =>{
 });
 };
 
+let cart = [];
+
 let modalCarrito = document.getElementById("cart");
 let total = 0;
 
@@ -49,12 +38,11 @@ if(cart.length > 0){
     <img class = "car-img" src = "${movie.image}"/> 
     <div class = "product-details">${movie.name}</div>
     <div class = "product-details"> cantidad: ${movie.cantidad}</div>
-    <div class = "product-details"> Precio: $ ${movie.cantidad}</div>
+    <div class = "product-details"> Precio: $ ${movie.price}</div>
     <div class = "product-details"> subtotal: $ ${movie.cantidad * movie.price}</div>
     <button class = "btn btn-info" id = "remove-product" onClick = "removeMovie(${index})"> Eliminar Pelicula </button>`
     modalCarrito.appendChild(cartContainer)
   })
-
 
 const totalContainer = document.createElement("div");
 totalContainer.className = "total-carrito";
@@ -69,12 +57,32 @@ modalCarrito.innerHTML = `<h1 class = "carrito_titulo"> Seleccione alguna pelicu
 const removeMovie = (index) =>{
   cart.splice(index, 1);
   storage(cart);
-  cartShop()
+  cartShop();
+  Toastify({
+    text: "Se elimino del Carrito!",
+    className: "info",
+    style: {
+      background: "linear-gradient(to right, #d61e1e, #d61e1e)",
+    }
+  }).showToast();
+
   }
 
-let cart = [];
-
 const addCart = (indexEncontrado) =>{
+  Toastify({
+    text: "Se agrego correctamente al carrito!",
+    duration: 3000,
+    newWindow: true,
+    close: true,
+    gravity: "top", 
+    position: "right",
+    stopOnFocus: true, 
+    style: {
+      background: "linear-gradient(to right, #097fc8, #097fc8)",
+    },
+    onClick: function(){}
+  }).showToast();
+
 const indexCart = cart.findIndex((element)=>{
   return element.id === movies [indexEncontrado].id;
 });
@@ -91,7 +99,6 @@ if(indexCart === -1){
 }
 }
 
-
 function checkout (){
   Swal.fire(
     'Compra Finalizada con Exito',
@@ -104,7 +111,7 @@ const storage = (cart) =>{
 localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-requestData();
+
 
 
 
